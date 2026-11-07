@@ -35,3 +35,32 @@ body {
 main, footer {
   padding: 24px;
 }
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.card {
+  flex: 1 1 260px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.card--highlight {
+  border-color: #4426FF;
+  background: #EEF;
+}
+
+.card__badge {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #4426FF;
+}
+
+.card__price {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
