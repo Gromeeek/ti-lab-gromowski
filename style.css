@@ -46,6 +46,12 @@ main, footer {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .card--highlight {
