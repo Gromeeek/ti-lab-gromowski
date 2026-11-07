@@ -64,3 +64,27 @@ main, footer {
   font-weight: bold;
   font-size: 1.2rem;
 }
+.price-table {
+  width: 100%;
+  max-width: 500px;
+  border-collapse: collapse;
+}
+
+.price-table th,
+.price-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.price-table .num {
+  text-align: right;
+}
+
+footer {
+  background: #f4f4f8;
+}
+
+address {
+  font-style: normal;
+}
