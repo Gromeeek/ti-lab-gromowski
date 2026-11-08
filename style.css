@@ -7,7 +7,20 @@
   --tekst: #222;
   --szary: #5C5A70;
   --ramka: #E3E1F0;
+  --karta: #fff;
+  --napis: #14112B;
   --naglowki: 'Barlow Condensed', system-ui, sans-serif;
+}
+
+/* Ciemny motyw: te same nazwy, inne wartości */
+body.dark {
+  --fiolet: #6A55FF;
+  --tlo: #0B0A18;
+  --tekst: #E8E6F5;
+  --szary: #A9A6C2;
+  --ramka: #2A2650;
+  --karta: #1A1735;
+  --napis: #F2F0FF;
 }
 
 html {
@@ -22,6 +35,7 @@ body {
   line-height: 1.6;
   color: var(--tekst);
   background: var(--tlo);
+  transition: background 0.3s, color 0.3s;
 }
 
 h1, h2, h3 {
@@ -40,7 +54,8 @@ h1, h2, h3 {
   justify-content: space-between;
   align-items: center;
   padding: 12px max(24px, calc((100% - 1100px) / 2));
-  background: #fff;
+  gap: 12px;
+  background: var(--karta);
   box-shadow: 0 2px 12px rgba(20, 17, 43, 0.08);
 }
 
@@ -52,19 +67,24 @@ h1, h2, h3 {
   font-style: italic;
   font-weight: 700;
   font-size: 1.8rem;
-  color: var(--granat);
+  color: var(--napis);
   text-decoration: none;
+}
+
+.dark .logo svg * {
+  stroke: #8B7BFF;
 }
 
 .menu {
   display: flex;
   gap: 8px;
+  margin-left: auto;
 }
 
 .menu a {
   padding: 6px 14px;
   border-radius: 999px;
-  color: var(--granat);
+  color: var(--napis);
   font-weight: 600;
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
@@ -89,7 +109,7 @@ section {
 h2 {
   font-size: 2.4rem;
   margin: 0 0 24px;
-  color: var(--granat);
+  color: var(--napis);
 }
 
 h2::after {
@@ -227,7 +247,22 @@ h2::after {
   fill: none;
   stroke: var(--zolty);
   stroke-width: 4;
+  stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.panel__bike .szprychy {
+  stroke-width: 1.5;
+}
+
+.panel__bike .kolo {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: kręć 2s linear infinite;
+}
+
+@keyframes kręć {
+  to { transform: rotate(360deg); }
 }
 
 .panel__stats {
@@ -271,7 +306,7 @@ h2::after {
   flex: 1 1 260px;
   padding: 24px;
   border-radius: 16px;
-  background: #fff;
+  background: var(--karta);
   border: 1px solid var(--ramka);
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -284,7 +319,7 @@ h2::after {
 .card h3 {
   margin: 0 0 8px;
   font-size: 1.7rem;
-  color: var(--granat);
+  color: var(--napis);
 }
 
 .card p {
@@ -329,7 +364,7 @@ h2::after {
   width: 100%;
   max-width: 560px;
   border-collapse: collapse;
-  background: #fff;
+  background: var(--karta);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(20, 17, 43, 0.06);
@@ -436,6 +471,25 @@ h2::after {
   opacity: 0.6;
 }
 
+/* ===== Przełącznik motywu ===== */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  border: 1px solid var(--ramka);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Dla osób, które wyłączyły animacje w systemie */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /* ===== Przycisk menu i telefon ===== */
 .menu-toggle {
   display: none;
@@ -471,5 +525,11 @@ h2::after {
 
   .hero {
     padding: 40px 24px;
+  }
+
+  .theme-toggle {
+    position: absolute;
+    top: 14px;
+    right: 16px;
   }
 }

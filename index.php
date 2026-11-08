@@ -43,6 +43,7 @@ $cennik = [
       <a href="#cennik">Cennik</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
+    <button class="theme-toggle" aria-label="Ciemny motyw" aria-pressed="false">🌙</button>
   </header>
 
   <main>
@@ -66,11 +67,17 @@ $cennik = [
       <div class="hero__panel">
         <p class="panel__label"><span class="panel__dot"></span> warsztat LIVE</p>
         <svg class="panel__bike" viewBox="0 0 120 64" aria-hidden="true">
-          <circle cx="28" cy="42" r="18"/>
-          <circle cx="92" cy="42" r="18"/>
-          <polyline points="28,42 48,14 80,14 92,42"/>
-          <polyline points="48,14 60,42 80,14"/>
-        </svg>
+  <g class="kolo">
+    <circle cx="28" cy="42" r="18"/>
+    <path class="szprychy" d="M10 42H46 M28 24V60 M15.3 29.3L40.7 54.7 M15.3 54.7L40.7 29.3"/>
+  </g>
+  <g class="kolo">
+    <circle cx="92" cy="42" r="18"/>
+    <path class="szprychy" d="M74 42H110 M92 24V60 M79.3 29.3L104.7 54.7 M79.3 54.7L104.7 29.3"/>
+  </g>
+  <polyline points="28,42 48,14 80,14 92,42"/>
+  <polyline points="48,14 60,42 80,14"/>
+</svg>
         <div class="panel__stats">
           <div><strong>1200+</strong><span>naprawionych rowerów</span></div>
           <div><strong>24 h</strong><span>maks. czas naprawy</span></div>
