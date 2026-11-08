@@ -1,7 +1,7 @@
 <?php
 $firma = 'Szprycha';
 $rok = date('Y');
-$imie = $_GET['imie'] ?? 'Kuba';
+$imie = $_GET['imie'] ?? 'Gościu';
 
 $cennik = [
     ['nazwa' => 'Przegląd podstawowy', 'cena' => 120],
@@ -9,7 +9,7 @@ $cennik = [
     ['nazwa' => 'Wymiana dętki',       'cena' => 30],
     ['nazwa' => 'Centrowanie koła',    'cena' => 50],
     ['nazwa' => 'Wymiana łańcucha',    'cena' => 40],
-        ['nazwa' => 'Regulacja hamulców', 'cena' => 60],
+    ['nazwa' => 'Regulacja hamulców',  'cena' => 60],
 ];
 ?>
 <!DOCTYPE html>
@@ -19,21 +19,24 @@ $cennik = [
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Szprycha – serwis rowerowy</title>
   <meta name="description" content="Pracownia Rowerowa Szprycha w Bydgoszczy: przeglądy, serwis i naprawy rowerów. Sprawdź cennik i zadzwoń.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:ital,wght@1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <a class="logo" href="#">
-  <svg viewBox="0 0 120 64" width="72" height="38" role="img" aria-labelledby="logo-tytul">
-    <title id="logo-tytul">Szprycha</title>
-    <circle cx="28" cy="42" r="18" fill="none" stroke="#4426FF" stroke-width="5"/>
-    <circle cx="92" cy="42" r="18" fill="none" stroke="#4426FF" stroke-width="5"/>
-    <polyline points="28,42 48,14 80,14 92,42" fill="none" stroke="#4426FF" stroke-width="5" stroke-linejoin="round"/>
-    <polyline points="48,14 60,42 80,14" fill="none" stroke="#4426FF" stroke-width="5" stroke-linejoin="round"/>
-  </svg>
-  <span>Szprycha</span>
-</a>
+      <svg viewBox="0 0 120 64" width="72" height="38" role="img" aria-labelledby="logo-tytul">
+        <title id="logo-tytul">Szprycha</title>
+        <circle cx="28" cy="42" r="18" fill="none" stroke="#4426FF" stroke-width="5"/>
+        <circle cx="92" cy="42" r="18" fill="none" stroke="#4426FF" stroke-width="5"/>
+        <polyline points="28,42 48,14 80,14 92,42" fill="none" stroke="#4426FF" stroke-width="5" stroke-linejoin="round"/>
+        <polyline points="48,14 60,42 80,14" fill="none" stroke="#4426FF" stroke-width="5" stroke-linejoin="round"/>
+      </svg>
+      <span>Szprycha</span>
+    </a>
     <button class="menu-toggle" aria-expanded="false">Menu</button>
     <nav class="menu">
       <a href="#uslugi">Usługi</a>
@@ -43,71 +46,109 @@ $cennik = [
   </header>
 
   <main>
-    <h1>Pracownia Rowerowa Szprycha</h1>
-<p>Cześć, <?= htmlspecialchars($imie) ?>!</p>
+    <section class="hero">
+      <div class="hero__text">
+        <p class="hero__greeting">Cześć, <?= htmlspecialchars($imie) ?>!</p>
+        <p class="hero__place">Bydgoszcz i okolice</p>
+        <h1>Pracownia Rowerowa Szprycha</h1>
+        <p class="hero__lead">Przeglądy, naprawy i serwis rowerów każdego typu. Większość napraw robimy od ręki, resztę w 24 godziny.</p>
+        <div class="hero__buttons">
+          <a class="btn" href="#cennik">Zobacz cennik</a>
+          <a class="btn btn--outline" href="#kontakt">Zadzwoń do nas</a>
+        </div>
+        <ul class="hero__pills">
+          <li>Przegląd od ręki</li>
+          <li>Naprawa w 24 h</li>
+          <li>Gwarancja 6 mies.</li>
+        </ul>
+      </div>
+
+      <div class="hero__panel">
+        <p class="panel__label"><span class="panel__dot"></span> warsztat LIVE</p>
+        <svg class="panel__bike" viewBox="0 0 120 64" aria-hidden="true">
+          <circle cx="28" cy="42" r="18"/>
+          <circle cx="92" cy="42" r="18"/>
+          <polyline points="28,42 48,14 80,14 92,42"/>
+          <polyline points="48,14 60,42 80,14"/>
+        </svg>
+        <div class="panel__stats">
+          <div><strong>1200+</strong><span>naprawionych rowerów</span></div>
+          <div><strong>24 h</strong><span>maks. czas naprawy</span></div>
+          <div><strong>4,9</strong><span>ocena klientów</span></div>
+        </div>
+        <p class="panel__status">Twój rower: gotowy do odbioru</p>
+      </div>
+    </section>
+
     <section id="uslugi">
       <h2>Usługi</h2>
       <div class="cards">
-  <article class="card">
-    <h3>Przegląd</h3>
-    <p>Regulacja hamulców i przerzutek, kontrola napędu.</p>
-    <p class="card__price">od 120 zł</p>
-  </article>
-
-  <article class="card card--highlight">
-    <p class="card__badge">Najczęściej wybierane</p>
-    <h3>Serwis kompleksowy</h3>
-    <p>Pełny przegląd, czyszczenie napędu i centrowanie kół.</p>
-    <p class="card__price">od 250 zł</p>
-  </article>
-
-  <article class="card">
-    <h3>Wymiana dętki</h3>
-    <p>Szybka naprawa przebitej dętki, także od ręki.</p>
-    <p class="card__price">od 30 zł</p>
-  </article>
-</div>
+        <article class="card">
+          <h3>Przegląd</h3>
+          <p>Regulacja hamulców i przerzutek, kontrola napędu.</p>
+          <p class="card__price">od 120 zł</p>
+        </article>
+        <article class="card card--highlight">
+          <p class="card__badge">Najczęściej wybierane</p>
+          <h3>Serwis kompleksowy</h3>
+          <p>Pełny przegląd, czyszczenie napędu i centrowanie kół.</p>
+          <p class="card__price">od 250 zł</p>
+        </article>
+        <article class="card">
+          <h3>Wymiana dętki</h3>
+          <p>Szybka naprawa przebitej dętki, także od ręki.</p>
+          <p class="card__price">od 30 zł</p>
+        </article>
+      </div>
     </section>
 
     <section id="cennik">
       <h2>Cennik</h2>
       <table class="price-table">
-        <?php $max = max(array_column($cennik, 'cena')); ?>
-<svg class="chart" viewBox="0 0 400 <?= count($cennik) * 30 ?>" role="img" aria-labelledby="wykres-tytul">
-  <title id="wykres-tytul">Wykres cen usług</title>
-  <?php foreach ($cennik as $i => $usluga): ?>
-    <?php $y = $i * 30; $szer = $usluga['cena'] / $max * 220; ?>
-    <text x="0" y="<?= $y + 18 ?>" font-size="12"><?= htmlspecialchars($usluga['nazwa']) ?></text>
-    <rect x="130" y="<?= $y + 4 ?>" width="<?= $szer ?>" height="20" rx="3" fill="#4426FF"/>
-    <text x="<?= 130 + $szer + 6 ?>" y="<?= $y + 18 ?>" font-size="12"><?= $usluga['cena'] ?> zł</text>
-  <?php endforeach; ?>
-</svg>
-  <thead>
-    <tr>
-      <th>Usługa</th>
-      <th class="num">Cena</th>
-    </tr>
-  </thead>
- <tbody>
-<?php foreach ($cennik as $usluga): ?>
-  <tr>
-    <td><?= htmlspecialchars($usluga['nazwa']) ?></td>
-    <td class="num"><?= $usluga['cena'] ?> zł</td>
-  </tr>
-<?php endforeach; ?>
-</tbody>
-</table>
+        <thead><tr><th>Usługa</th><th class="num">Cena</th></tr></thead>
+        <tbody>
+        <?php foreach ($cennik as $usluga): ?>
+          <tr>
+            <td><?= htmlspecialchars($usluga['nazwa']) ?></td>
+            <td class="num"><?= $usluga['cena'] ?> zł</td>
+          </tr>
+        <?php endforeach; ?>
+        </tbody>
+      </table>
     </section>
   </main>
 
-  <footer id="kontakt">
+  <footer id="kontakt" class="site-footer">
     <h2>Kontakt</h2>
-    <address>
-  <p>ul. Rowerowa 12, 85-001 Bydgoszcz</p>
-  <p>Telefon: <a href="tel:+48500100200">500 100 200</a></p>
-  <p>E-mail: <a href="mailto:kontakt@szprycha.pl">kontakt@szprycha.pl</a></p>
-</address>
-<p>&copy; <?= $rok ?> <?= $firma ?></p>
+    <address class="contact">
+      <div class="contact__item">
+        <span class="contact__icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </span>
+        <p>ul. Rowerowa 12<br>85-001 Bydgoszcz</p>
+      </div>
+      <div class="contact__item">
+        <span class="contact__icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/>
+          </svg>
+        </span>
+        <a href="tel:+48500100200">500 100 200</a>
+      </div>
+      <div class="contact__item">
+        <span class="contact__icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.9 7.9"/>
+          </svg>
+        </span>
+        <a href="mailto:kontakt@szprycha.pl">kontakt@szprycha.pl</a>
+      </div>
+    </address>
+    <p class="copy">&copy; <?= $rok ?> <?= $firma ?></p>
   </footer>
 </body>
 </html>
