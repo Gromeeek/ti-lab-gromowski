@@ -94,9 +94,34 @@ footer {
 address {
   font-style: normal;
 }
+.menu-toggle {
+  display: none;
+  padding: 6px 14px;
+  font: inherit;
+  background: #fff;
+  border: 1px solid #4426FF;
+  border-radius: 6px;
+  color: #4426FF;
+  cursor: pointer;
+}
+
 @media (max-width: 600px) {
   .site-header {
     flex-direction: column;
     gap: 8px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .menu--open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
