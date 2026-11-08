@@ -1,7 +1,7 @@
 <?php
 $firma = 'Szprycha';
 $rok = date('Y');
-$imie = $_GET['imie'] ?? 'Gościu';
+$imie = $_GET['imie'] ?? 'Gromek';
 
 $cennik = [
     ['nazwa' => 'Przegląd podstawowy', 'cena' => 120],
