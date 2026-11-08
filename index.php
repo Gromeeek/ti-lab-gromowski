@@ -1,7 +1,7 @@
 <?php
 $firma = 'Szprycha';
 $rok = date('Y');
-$imie = $_GET['imie'] ?? 'Gromek';
+$imie = $_GET['imie'] ?? 'Kuba';
 
 $cennik = [
     ['nazwa' => 'Przegląd podstawowy', 'cena' => 120],
@@ -72,6 +72,16 @@ $cennik = [
     <section id="cennik">
       <h2>Cennik</h2>
       <table class="price-table">
+        <?php $max = max(array_column($cennik, 'cena')); ?>
+<svg class="chart" viewBox="0 0 400 <?= count($cennik) * 30 ?>" role="img" aria-labelledby="wykres-tytul">
+  <title id="wykres-tytul">Wykres cen usług</title>
+  <?php foreach ($cennik as $i => $usluga): ?>
+    <?php $y = $i * 30; $szer = $usluga['cena'] / $max * 220; ?>
+    <text x="0" y="<?= $y + 18 ?>" font-size="12"><?= htmlspecialchars($usluga['nazwa']) ?></text>
+    <rect x="130" y="<?= $y + 4 ?>" width="<?= $szer ?>" height="20" rx="3" fill="#4426FF"/>
+    <text x="<?= 130 + $szer + 6 ?>" y="<?= $y + 18 ?>" font-size="12"><?= $usluga['cena'] ?> zł</text>
+  <?php endforeach; ?>
+</svg>
   <thead>
     <tr>
       <th>Usługa</th>
