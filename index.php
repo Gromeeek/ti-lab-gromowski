@@ -201,6 +201,7 @@ $cennik = [
     </section>
     <section id="faq">
       <h2>Częste pytania</h2>
+      <div class="faq-uklad">
       <div class="faq">
         <details>
           <summary>Ile trwa przegląd?</summary>
@@ -218,6 +219,14 @@ $cennik = [
           <summary>Czy dajecie gwarancję?</summary>
           <p>Tak, 6 miesięcy na wykonane usługi i zamontowane części.</p>
         </details>
+      </div>
+
+        <aside class="faq-cta">
+          <h3>Nie znalazłeś odpowiedzi?</h3>
+          <p>Zadzwoń albo napisz. Odpowiemy na każde pytanie o Twój rower.</p>
+          <a class="btn" href="tel:+48500100200">Zadzwoń: 500 100 200</a>
+          <a class="faq-cta__mail" href="mailto:kontakt@szprycha.pl">kontakt@szprycha.pl</a>
+        </aside>
       </div>
     </section>
 
