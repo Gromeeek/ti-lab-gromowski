@@ -532,7 +532,10 @@ h2::after {
     top: 14px;
     right: 16px;
   }
-  /* ===== Kalkulator wyceny ===== */
+}
+
+
+/* ===== Kalkulator wyceny ===== */
 .wycena {
   display: flex;
   flex-wrap: wrap;
@@ -608,5 +611,4 @@ h2::after {
   min-height: 3em;
   margin-bottom: 20px !important;
   opacity: 0.85;
-}
 }

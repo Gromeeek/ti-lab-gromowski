@@ -29,7 +29,8 @@ motyw.addEventListener('click', function () {
   try {
     localStorage.setItem('motyw', ciemny ? 'ciemny' : 'jasny');
   } catch (e) {}
-}
+});
+
 // ===== Kalkulator wyceny =====
 const opcje = document.querySelectorAll('.wycena input[type="checkbox"]');
 const suma = document.querySelector('.wycena__suma');
@@ -65,4 +66,3 @@ function przelicz() {
 opcje.forEach(function (opcja) {
   opcja.addEventListener('change', przelicz);
 });
-);
