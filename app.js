@@ -66,3 +66,36 @@ function przelicz() {
 opcje.forEach(function (opcja) {
   opcja.addEventListener('change', przelicz);
 });
+
+// ===== Godziny otwarcia: czy teraz otwarte? =====
+const godzinyOtwarcia = {
+  0: null,      // niedziela: zamknięte
+  1: [9, 18],   // poniedziałek
+  2: [9, 18],
+  3: [9, 18],
+  4: [9, 18],
+  5: [9, 18],   // piątek
+  6: [9, 14]    // sobota
+};
+
+const status = document.querySelector('.status');
+const teraz = new Date();
+const dzien = teraz.getDay();                               // 0 = niedziela, 6 = sobota
+const godzina = teraz.getHours() + teraz.getMinutes() / 60; // np. 14:30 → 14.5
+const dzisiaj = godzinyOtwarcia[dzien];
+
+if (dzisiaj && godzina >= dzisiaj[0] && godzina < dzisiaj[1]) {
+  status.textContent = '🟢 Teraz otwarte, do ' + dzisiaj[1] + ':00';
+  status.classList.add('status--otwarte');
+} else {
+  status.textContent = '🔴 Teraz zamknięte';
+  status.classList.add('status--zamkniete');
+}
+
+// Podświetl wiersz z dzisiejszym dniem
+document.querySelectorAll('.godziny li').forEach(function (wiersz) {
+  const dni = wiersz.dataset.dni.split(',');
+  if (dni.includes(String(dzien))) {
+    wiersz.classList.add('dzis');
+  }
+});

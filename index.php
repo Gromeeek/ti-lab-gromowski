@@ -68,17 +68,17 @@ $cennik = [
       <div class="hero__panel">
         <p class="panel__label"><span class="panel__dot"></span> warsztat LIVE</p>
         <svg class="panel__bike" viewBox="0 0 120 64" aria-hidden="true">
-  <g class="kolo">
-    <circle cx="28" cy="42" r="18"/>
-    <path class="szprychy" d="M10 42H46 M28 24V60 M15.3 29.3L40.7 54.7 M15.3 54.7L40.7 29.3"/>
-  </g>
-  <g class="kolo">
-    <circle cx="92" cy="42" r="18"/>
-    <path class="szprychy" d="M74 42H110 M92 24V60 M79.3 29.3L104.7 54.7 M79.3 54.7L104.7 29.3"/>
-  </g>
-  <polyline points="28,42 48,14 80,14 92,42"/>
-  <polyline points="48,14 60,42 80,14"/>
-</svg>
+          <g class="kolo">
+            <circle cx="28" cy="42" r="18"/>
+            <path class="szprychy" d="M10 42H46 M28 24V60 M15.3 29.3L40.7 54.7 M15.3 54.7L40.7 29.3"/>
+          </g>
+          <g class="kolo">
+            <circle cx="92" cy="42" r="18"/>
+            <path class="szprychy" d="M74 42H110 M92 24V60 M79.3 29.3L104.7 54.7 M79.3 54.7L104.7 29.3"/>
+          </g>
+          <polyline points="28,42 48,14 80,14 92,42"/>
+          <polyline points="48,14 60,42 80,14"/>
+        </svg>
         <div class="panel__stats">
           <div><strong>1200+</strong><span>naprawionych rowerów</span></div>
           <div><strong>24 h</strong><span>maks. czas naprawy</span></div>
@@ -112,6 +112,7 @@ $cennik = [
 
     <section id="cennik">
       <h2>Cennik</h2>
+      <div class="cennik-uklad">
       <table class="price-table">
         <thead><tr><th>Usługa</th><th class="num">Cena</th></tr></thead>
         <tbody>
@@ -123,28 +124,49 @@ $cennik = [
         <?php endforeach; ?>
         </tbody>
       </table>
+
+        <aside class="boczne">
+          <div class="boks">
+            <h3>Godziny otwarcia</h3>
+            <p class="status">Sprawdzam…</p>
+            <ul class="godziny">
+              <li data-dni="1,2,3,4,5"><span>Poniedziałek – piątek</span><b>9:00 – 18:00</b></li>
+              <li data-dni="6"><span>Sobota</span><b>9:00 – 14:00</b></li>
+              <li data-dni="0"><span>Niedziela</span><b>zamknięte</b></li>
+            </ul>
+          </div>
+
+          <div class="boks boks--promo">
+            <p class="boks__tag">Promocja tygodnia</p>
+            <h3>Łańcuch + czyszczenie napędu</h3>
+            <p>Nowy łańcuch i napęd jak z fabryki. Rower od razu jedzie ciszej.</p>
+            <p class="promo__cena"><s>80 zł</s> 59 zł</p>
+          </div>
+        </aside>
+      </div>
     </section>
+
     <section id="wycena">
-  <h2>Wycena</h2>
-  <p>Zaznacz, czego potrzebuje Twój rower, a od razu zobaczysz koszt. Przy 3 usługach dostajesz 10% rabatu.</p>
-  <div class="wycena">
-    <div class="wycena__lista">
-    <?php foreach ($cennik as $usluga): ?>
-      <label class="opcja">
-        <input type="checkbox" value="<?= $usluga['cena'] ?>">
-        <span><?= htmlspecialchars($usluga['nazwa']) ?></span>
-        <b><?= $usluga['cena'] ?> zł</b>
-      </label>
-    <?php endforeach; ?>
-    </div>
-    <div class="wycena__wynik">
-      <p>Twój serwis</p>
-      <output class="wycena__suma" aria-live="polite">0 zł</output>
-      <p class="wycena__info">Wybierz usługi z listy</p>
-      <a class="btn" href="#kontakt">Umów wizytę</a>
-    </div>
-  </div>
-</section>
+      <h2>Wycena</h2>
+      <p>Zaznacz, czego potrzebuje Twój rower, a od razu zobaczysz koszt. Przy 3 usługach dostajesz 10% rabatu.</p>
+      <div class="wycena">
+        <div class="wycena__lista">
+        <?php foreach ($cennik as $usluga): ?>
+          <label class="opcja">
+            <input type="checkbox" value="<?= $usluga['cena'] ?>">
+            <span><?= htmlspecialchars($usluga['nazwa']) ?></span>
+            <b><?= $usluga['cena'] ?> zł</b>
+          </label>
+        <?php endforeach; ?>
+        </div>
+        <div class="wycena__wynik">
+          <p>Twój serwis</p>
+          <output class="wycena__suma" aria-live="polite">0 zł</output>
+          <p class="wycena__info">Wybierz usługi z listy</p>
+          <a class="btn" href="#kontakt">Umów wizytę</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer id="kontakt" class="site-footer">

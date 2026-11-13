@@ -612,3 +612,122 @@ h2::after {
   margin-bottom: 20px !important;
   opacity: 0.85;
 }
+
+
+/* ===== Cennik + kolumna boczna ===== */
+.cennik-uklad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.cennik-uklad .price-table {
+  flex: 1 1 480px;
+}
+
+.boczne {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.boks {
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--ramka);
+  background: var(--karta);
+}
+
+.boks h3 {
+  margin: 0 0 12px;
+  font-size: 1.6rem;
+  color: var(--napis);
+}
+
+.status {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: var(--tlo);
+}
+
+.status--otwarte {
+  background: rgba(61, 220, 132, 0.18);
+  color: #13804A;
+}
+
+.status--zamkniete {
+  background: rgba(255, 80, 80, 0.15);
+  color: #C62828;
+}
+
+.dark .status--otwarte { color: #3DDC84; }
+.dark .status--zamkniete { color: #FF8A8A; }
+
+.godziny {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.godziny li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.godziny li.dzis {
+  background: var(--tlo);
+  border-left: 4px solid var(--zolty);
+  font-weight: 600;
+}
+
+.boks--promo {
+  border: none;
+  background: linear-gradient(135deg, var(--fiolet), var(--granat));
+  color: #fff;
+}
+
+.boks--promo h3 {
+  color: #fff;
+}
+
+.boks--promo p {
+  margin: 0 0 12px;
+  opacity: 0.9;
+}
+
+.boks .boks__tag {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--zolty);
+  color: var(--granat);
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 1;
+}
+
+.boks .promo__cena {
+  margin: 0;
+  font-family: var(--naglowki);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--zolty);
+  opacity: 1;
+}
+
+.promo__cena s {
+  margin-right: 8px;
+  font-size: 1.3rem;
+  color: #fff;
+  opacity: 0.6;
+}
