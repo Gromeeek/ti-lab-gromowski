@@ -41,6 +41,7 @@ $cennik = [
     <nav class="menu">
       <a href="#uslugi">Usługi</a>
       <a href="#cennik">Cennik</a>
+      <a href="#wycena">Wycena</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
     <button class="theme-toggle" aria-label="Ciemny motyw" aria-pressed="false">🌙</button>
@@ -123,6 +124,27 @@ $cennik = [
         </tbody>
       </table>
     </section>
+    <section id="wycena">
+  <h2>Wycena</h2>
+  <p>Zaznacz, czego potrzebuje Twój rower, a od razu zobaczysz koszt. Przy 3 usługach dostajesz 10% rabatu.</p>
+  <div class="wycena">
+    <div class="wycena__lista">
+    <?php foreach ($cennik as $usluga): ?>
+      <label class="opcja">
+        <input type="checkbox" value="<?= $usluga['cena'] ?>">
+        <span><?= htmlspecialchars($usluga['nazwa']) ?></span>
+        <b><?= $usluga['cena'] ?> zł</b>
+      </label>
+    <?php endforeach; ?>
+    </div>
+    <div class="wycena__wynik">
+      <p>Twój serwis</p>
+      <output class="wycena__suma" aria-live="polite">0 zł</output>
+      <p class="wycena__info">Wybierz usługi z listy</p>
+      <a class="btn" href="#kontakt">Umów wizytę</a>
+    </div>
+  </div>
+</section>
   </main>
 
   <footer id="kontakt" class="site-footer">

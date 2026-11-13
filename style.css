@@ -532,4 +532,81 @@ h2::after {
     top: 14px;
     right: 16px;
   }
+  /* ===== Kalkulator wyceny ===== */
+.wycena {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.wycena__lista {
+  flex: 1 1 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.opcja {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 2px solid var(--ramka);
+  border-radius: 12px;
+  background: var(--karta);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.opcja:hover {
+  border-color: var(--fiolet);
+}
+
+.opcja:has(input:checked) {
+  border-color: var(--fiolet);
+  background: rgba(68, 38, 255, 0.08);
+}
+
+.opcja input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--fiolet);
+}
+
+.opcja b {
+  margin-left: auto;
+  color: var(--fiolet);
+}
+
+.wycena__wynik {
+  flex: 1 1 260px;
+  position: sticky;
+  top: 100px;
+  padding: 32px 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--fiolet), var(--granat));
+  color: #fff;
+  text-align: center;
+}
+
+.wycena__wynik p {
+  margin: 0;
+}
+
+.wycena__suma {
+  display: block;
+  margin: 8px 0;
+  font-family: var(--naglowki);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 3.5rem;
+  color: var(--zolty);
+}
+
+.wycena__info {
+  min-height: 3em;
+  margin-bottom: 20px !important;
+  opacity: 0.85;
+}
 }
