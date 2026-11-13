@@ -99,3 +99,54 @@ document.querySelectorAll('.godziny li').forEach(function (wiersz) {
     wiersz.classList.add('dzis');
   }
 });
+
+// ===== Liczniki w panelu: nabijają się od zera =====
+const bezAnimacji = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+document.querySelectorAll('.licznik').forEach(function (licznik) {
+  const cel = Number(licznik.dataset.cel);
+  const miejsca = Number(licznik.dataset.miejsca || 0);
+  const koncowka = licznik.dataset.koncowka || '';
+  const czasTrwania = 1500; // milisekundy
+  let start = null;
+
+  function pokaz(wartosc) {
+    licznik.textContent = wartosc.toFixed(miejsca).replace('.', ',') + koncowka;
+  }
+
+  function klatka(czas) {
+    if (start === null) {
+      start = czas;
+    }
+    const postep = Math.min((czas - start) / czasTrwania, 1); // od 0 do 1
+    pokaz(cel * postep);
+    if (postep < 1) {
+      requestAnimationFrame(klatka);
+    }
+  }
+
+  if (bezAnimacji) {
+    pokaz(cel);
+  } else {
+    requestAnimationFrame(klatka);
+  }
+});
+
+// ===== Sekcje wjeżdżają, gdy do nich przewiniesz =====
+const sekcje = document.querySelectorAll('main section:not(.hero)');
+
+const obserwator = new IntersectionObserver(function (wpisy) {
+  wpisy.forEach(function (wpis) {
+    if (wpis.isIntersecting) {
+      wpis.target.classList.add('widoczne');
+      obserwator.unobserve(wpis.target); // wystarczy raz
+    }
+  });
+}, { threshold: 0.15 });
+
+if (!bezAnimacji) {
+  sekcje.forEach(function (sekcja) {
+    sekcja.classList.add('ukryte');
+    obserwator.observe(sekcja);
+  });
+}

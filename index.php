@@ -81,9 +81,9 @@ $cennik = [
           <polyline points="48,14 60,42 80,14"/>
         </svg>
         <div class="panel__stats">
-          <div><strong>1200+</strong><span>naprawionych rowerów</span></div>
-          <div><strong>24 h</strong><span>maks. czas naprawy</span></div>
-          <div><strong>4,9</strong><span>ocena klientów</span></div>
+          <div><strong class="licznik" data-cel="1200" data-koncowka="+">1200+</strong><span>naprawionych rowerów</span></div>
+          <div><strong class="licznik" data-cel="24" data-koncowka=" h">24 h</strong><span>maks. czas naprawy</span></div>
+          <div><strong class="licznik" data-cel="4.9" data-miejsca="1">4,9</strong><span>ocena klientów</span></div>
         </div>
         <p class="panel__status">Twój rower: gotowy do odbioru</p>
       </div>
@@ -110,6 +110,37 @@ $cennik = [
         </article>
       </div>
     </section>
+
+    <section id="jak">
+      <h2>Jak to działa</h2>
+      <ol class="kroki">
+        <li class="krok">
+          <span class="krok__nr">01</span>
+          <h3>Zgłoszenie</h3>
+          <p>Zadzwoń albo po prostu wpadnij z rowerem do warsztatu.</p>
+          <small>ok. 5 minut</small>
+        </li>
+        <li class="krok">
+          <span class="krok__nr">02</span>
+          <h3>Diagnoza</h3>
+          <p>Sprawdzamy rower i podajemy dokładną cenę. Bez niespodzianek.</p>
+          <small>ok. 15 minut</small>
+        </li>
+        <li class="krok">
+          <span class="krok__nr">03</span>
+          <h3>Naprawa</h3>
+          <p>Większość usług robimy od ręki, resztę najpóźniej następnego dnia.</p>
+          <small>od ręki do 24 h</small>
+        </li>
+        <li class="krok">
+          <span class="krok__nr">04</span>
+          <h3>Odbiór</h3>
+          <p>Wysyłamy SMS, gdy rower jest gotowy. Płacisz dopiero przy odbiorze.</p>
+          <small>kiedy Ci pasuje</small>
+        </li>
+      </ol>
+    </section>
+
 
     <section id="cennik">
       <h2>Cennik</h2>
@@ -168,6 +199,28 @@ $cennik = [
         </div>
       </div>
     </section>
+    <section id="faq">
+      <h2>Częste pytania</h2>
+      <div class="faq">
+        <details>
+          <summary>Ile trwa przegląd?</summary>
+          <p>Przegląd podstawowy robimy zwykle od ręki, w 1–2 godziny. Po serwisie kompleksowym rower odbierasz następnego dnia.</p>
+        </details>
+        <details>
+          <summary>Czy muszę się wcześniej umawiać?</summary>
+          <p>Nie musisz. Telefon wcześniej skraca jednak czekanie, szczególnie wiosną, gdy wszyscy wyciągają rowery z piwnic.</p>
+        </details>
+        <details>
+          <summary>Czy serwisujecie rowery elektryczne?</summary>
+          <p>Tak. Hamulce, napęd i koła w rowerach elektrycznych serwisujemy tak samo jak w zwykłych.</p>
+        </details>
+        <details>
+          <summary>Czy dajecie gwarancję?</summary>
+          <p>Tak, 6 miesięcy na wykonane usługi i zamontowane części.</p>
+        </details>
+      </div>
+    </section>
+
   </main>
 
   <footer id="kontakt" class="site-footer">
