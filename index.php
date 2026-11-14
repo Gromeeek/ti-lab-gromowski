@@ -35,6 +35,7 @@ $cennik = [
         <circle cx="92" cy="42" r="18" fill="none" stroke="#4426FF" stroke-width="5"/>
         <polyline points="28,42 48,14 80,14 92,42" fill="none" stroke="#4426FF" stroke-width="5" stroke-linejoin="round"/>
         <polyline points="48,14 60,42 80,14" fill="none" stroke="#4426FF" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M48 14 L45 6 M38 6 H52 M80 14 L83 5 H93" fill="none" stroke="#4426FF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span>Szprycha</span>
     </a>
@@ -79,6 +80,7 @@ $cennik = [
           </g>
           <polyline points="28,42 48,14 80,14 92,42"/>
           <polyline points="48,14 60,42 80,14"/>
+          <path d="M48 14 L45 6 M38 6 H52 M80 14 L83 5 H93"/>
         </svg>
         <div class="panel__stats">
           <div><strong class="licznik" data-cel="1200" data-koncowka="+">1200+</strong><span>naprawionych rowerów</span></div>
@@ -93,17 +95,20 @@ $cennik = [
       <h2>Usługi</h2>
       <div class="cards">
         <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg></span>
           <h3>Przegląd</h3>
           <p>Regulacja hamulców i przerzutek, kontrola napędu.</p>
           <p class="card__price">od 120 zł</p>
         </article>
         <article class="card card--highlight">
           <p class="card__badge">Najczęściej wybierane</p>
+          <span class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
           <h3>Serwis kompleksowy</h3>
           <p>Pełny przegląd, czyszczenie napędu i centrowanie kół.</p>
           <p class="card__price">od 250 zł</p>
         </article>
         <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v2"/></svg></span>
           <h3>Wymiana dętki</h3>
           <p>Szybka naprawa przebitej dętki, także od ręki.</p>
           <p class="card__price">od 30 zł</p>

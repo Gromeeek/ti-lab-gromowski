@@ -4,5 +4,6 @@
     <circle cx="92" cy="42" r="18"/>
     <polyline points="28,42 48,14 80,14 92,42"/>
     <polyline points="48,14 60,42 80,14"/>
+    <path d="M48 14 L45 6 M38 6 H52 M80 14 L83 5 H93" stroke-linecap="round"/>
   </g>
 </svg>

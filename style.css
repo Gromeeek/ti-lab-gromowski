@@ -316,6 +316,34 @@ h2::after {
   box-shadow: 0 12px 28px rgba(20, 17, 43, 0.12);
 }
 
+.card__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  background: var(--tlo);
+}
+
+.card__icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: var(--fiolet);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.card--highlight .card__icon {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.card--highlight .card__icon svg {
+  stroke: var(--zolty);
+}
+
 .card h3 {
   margin: 0 0 8px;
   font-size: 1.7rem;
