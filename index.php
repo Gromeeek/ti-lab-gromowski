@@ -1,16 +1,12 @@
 <?php
+require 'baza.php';
+
 $firma = 'Szprycha';
 $rok = date('Y');
 $imie = $_GET['imie'] ?? 'Gościu';
 
-$cennik = [
-    ['nazwa' => 'Przegląd podstawowy', 'cena' => 120],
-    ['nazwa' => 'Serwis kompleksowy',  'cena' => 250],
-    ['nazwa' => 'Wymiana dętki',       'cena' => 30],
-    ['nazwa' => 'Centrowanie koła',    'cena' => 50],
-    ['nazwa' => 'Wymiana łańcucha',    'cena' => 40],
-    ['nazwa' => 'Regulacja hamulców',  'cena' => 60],
-];
+// Lab 3: cennik z bazy zamiast tablicy w kodzie
+$cennik = $pdo->query('SELECT nazwa, cena FROM uslugi ORDER BY cena')->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="pl">
