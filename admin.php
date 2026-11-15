@@ -6,6 +6,7 @@ $blad = '';
 
 // 2. Obsługa formularzy (oba wysyłają POST, pole "akcja" mówi który)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    sprawdz_csrf();   // bonus: formularz musi pochodzić z naszego panelu
     $akcja = $_POST['akcja'] ?? '';
 
     if ($akcja === 'dodaj') {
@@ -31,11 +32,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // 3. Lista usług i komunikat
-$uslugi = $pdo->query('SELECT id, nazwa, cena FROM uslugi ORDER BY nazwa')->fetchAll();
+$uslugi = $pdo->query('SELECT id, nazwa, cena, popularnosc FROM uslugi ORDER BY nazwa')->fetchAll();
+
+// Bonus: dane do wykresu popularności (od najpopularniejszej)
+$wykres = $uslugi;
+usort($wykres, fn($a, $b) => $b['popularnosc'] <=> $a['popularnosc']);
+$maxPop = max(array_column($wykres, 'popularnosc') ?: [0]) ?: 1;   // ?: 1, żeby nie dzielić przez zero
 
 $komunikaty = [
     'dodano'   => 'Usługa dodana.',
     'usunieto' => 'Usługa usunięta.',
+    'zmieniono' => 'Zmiany zapisane.',
 ];
 $ok = $komunikaty[$_GET['ok'] ?? ''] ?? '';
 ?>
@@ -81,7 +88,9 @@ $ok = $komunikaty[$_GET['ok'] ?? ''] ?? '';
                   <td><?= htmlspecialchars($usluga['nazwa']) ?></td>
                   <td class="text-end"><?= (int) $usluga['cena'] ?> zł</td>
                   <td class="text-end">
+                    <a class="btn btn-sm btn-outline-primary" href="edytuj.php?id=<?= (int) $usluga['id'] ?>">Edytuj</a>
                     <form method="post" class="d-inline" onsubmit="return confirm('Usunąć tę usługę?')">
+                      <?= csrf_pole() ?>
                       <input type="hidden" name="akcja" value="usun">
                       <input type="hidden" name="id" value="<?= (int) $usluga['id'] ?>">
                       <button class="btn btn-sm btn-outline-danger">Usuń</button>
@@ -93,6 +102,21 @@ $ok = $komunikaty[$_GET['ok'] ?? ''] ?? '';
             </table>
           </div>
         </div>
+
+        <div class="card mt-4">
+          <div class="card-body">
+            <h2 class="h4 card-title">Popularność usług</h2>
+            <svg viewBox="0 0 420 <?= count($wykres) * 30 ?>" role="img" aria-labelledby="wykres-tytul" style="width: 100%; max-width: 560px; display: block">
+              <title id="wykres-tytul">Wykres popularności usług</title>
+              <?php foreach ($wykres as $i => $usluga): ?>
+                <?php $y = $i * 30; $szer = $usluga['popularnosc'] / $maxPop * 200; ?>
+                <text x="0" y="<?= $y + 18 ?>" font-size="12"><?= htmlspecialchars($usluga['nazwa']) ?></text>
+                <rect x="160" y="<?= $y + 5 ?>" width="<?= $szer ?>" height="18" rx="3" fill="#0d6efd"/>
+                <text x="<?= 160 + $szer + 6 ?>" y="<?= $y + 18 ?>" font-size="12"><?= (int) $usluga['popularnosc'] ?></text>
+              <?php endforeach; ?>
+            </svg>
+          </div>
+        </div>
       </div>
 
       <div class="col-lg-4">
@@ -100,6 +124,7 @@ $ok = $komunikaty[$_GET['ok'] ?? ''] ?? '';
           <div class="card-body">
             <h2 class="h4 card-title">Dodaj usługę</h2>
             <form method="post">
+              <?= csrf_pole() ?>
               <input type="hidden" name="akcja" value="dodaj">
               <div class="mb-3">
                 <label for="nazwa" class="form-label">Nazwa</label>

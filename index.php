@@ -7,6 +7,16 @@ $imie = $_GET['imie'] ?? 'Gościu';
 
 // Lab 3: cennik z bazy zamiast tablicy w kodzie
 $cennik = $pdo->query('SELECT nazwa, cena FROM uslugi ORDER BY cena')->fetchAll();
+
+// Bonus: filtr ceny w cenniku, np. index.php?max=100
+$max = (int) ($_GET['max'] ?? 0);
+if ($max > 0) {
+    $z = $pdo->prepare('SELECT nazwa, cena FROM uslugi WHERE cena <= :max ORDER BY cena');
+    $z->execute(['max' => $max]);
+    $cennikTabela = $z->fetchAll();
+} else {
+    $cennikTabela = $cennik;   // bez filtra: wszystkie usługi
+}
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -145,16 +155,28 @@ $cennik = $pdo->query('SELECT nazwa, cena FROM uslugi ORDER BY cena')->fetchAll(
 
     <section id="cennik">
       <h2>Cennik</h2>
+      <form class="filtr" method="get" action="#cennik">
+        <label for="max">Pokaż usługi do</label>
+        <input id="max" name="max" type="number" min="1" placeholder="np. 100" value="<?= $max > 0 ? $max : '' ?>">
+        <span>zł</span>
+        <button class="btn btn--maly">Filtruj</button>
+        <?php if ($max > 0): ?>
+          <a class="filtr__wyczysc" href="index.php#cennik">Pokaż wszystkie</a>
+        <?php endif; ?>
+      </form>
       <div class="cennik-uklad">
       <table class="price-table">
         <thead><tr><th>Usługa</th><th class="num">Cena</th></tr></thead>
         <tbody>
-        <?php foreach ($cennik as $usluga): ?>
+        <?php foreach ($cennikTabela as $usluga): ?>
           <tr>
             <td><?= htmlspecialchars($usluga['nazwa']) ?></td>
             <td class="num"><?= $usluga['cena'] ?> zł</td>
           </tr>
         <?php endforeach; ?>
+        <?php if (!$cennikTabela): ?>
+          <tr><td colspan="2">Brak usług do <?= $max ?> zł.</td></tr>
+        <?php endif; ?>
         </tbody>
       </table>
 
