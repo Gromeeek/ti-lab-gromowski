@@ -905,3 +905,40 @@ h2::after {
   opacity: 1;
   transform: none;
 }
+
+
+/* ===== Filtr ceny w cenniku ===== */
+.filtr {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.filtr input {
+  width: 110px;
+  padding: 8px 12px;
+  font: inherit;
+  border: 2px solid var(--ramka);
+  border-radius: 10px;
+  background: var(--karta);
+  color: var(--tekst);
+}
+
+.filtr input:focus {
+  outline: none;
+  border-color: var(--fiolet);
+}
+
+.btn--maly {
+  padding: 8px 20px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filtr__wyczysc {
+  color: var(--fiolet);
+  font-weight: 600;
+}
